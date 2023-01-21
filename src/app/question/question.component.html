@@ -1,0 +1,9 @@
+<div class="question">
+  <h2 class="question__title">{{question?.question}}</h2>
+
+  <div class="response">
+    <ng-container *ngFor="let reponce of question?.responses; index as i" >
+      <button class="button" [class.button--active]="response == reponce.value" class="button" (click)="onClick(reponce.value)">{{reponce.name}}</button>
+    </ng-container>
+  </div>
+</div>
