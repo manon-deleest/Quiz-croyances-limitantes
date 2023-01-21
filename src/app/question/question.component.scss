@@ -9,7 +9,7 @@
     margin: 10px;
     font-size: 17px;
     width: 250px;
-    @media (min-width: 740px){
+    @media (min-width: 1000px){
         height: 150px;
     }
     &--active{
@@ -37,7 +37,7 @@
         padding: 15px;
         line-height: 23px;
         text-align: center;
-        @media (min-width: 740px){
+        @media (min-width: 1000px){
             font-size: 22px;
         }
     }
@@ -51,7 +51,7 @@
     color: black;
     font-size: 18px;
     flex-direction: column;
-    @media (min-width: 740px){
+    @media (min-width: 1000px){
         width: 90%;
         flex-direction: row;
     }
