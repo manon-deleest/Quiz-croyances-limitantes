@@ -7,3 +7,5 @@ Les croyances limitantes sont des pensées négatives sur nous-même et sur le m
 Il est important de travailler sur ses croyances limitantes pour les identifier, les remettre en question et les remplacer par des pensées plus positives afin de pouvoir atteindre nos aspirations et nos rêves. Ce test vous aidera à identifier vos croyances limitantes ce qui vous permettra de commencer à les remplacer par des pensées plus positives.
 
 J'ai développé ce test en Angular et il est disponible en suivant ce lien : [Test des croyances limitantes](https://manon-deleest.github.io/Quiz-croyances-limitantes/)
+
+Vous pouvez également retrouver un compte linkedin traitant du [développement personnelle](https://www.linkedin.com/in/lotus-d%C3%A9veloppement-997b11260/)
