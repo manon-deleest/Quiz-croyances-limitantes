@@ -4,6 +4,8 @@
     margin: auto;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 30px;
+    overflow: scroll;
+    padding: 20px;
     @media (min-width: 1000px){
         width: 90vw;
     }
@@ -37,9 +39,9 @@
 
 .button{
     background-color: #c29294;
+    border: solid 1px #c19395;
     color: white;
     letter-spacing: 2px;
-    border: none;
     border-radius: 30px;
     padding: 15px 40px;
     font-size: 20px;
@@ -55,11 +57,9 @@
 }
 
 .end{
-    height: 80%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
     padding: 40px;
     color: black;
     font-size: 18px;
@@ -68,6 +68,48 @@
         font-size: 22px;
         text-align: center;
     }
+
+    &__info{
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background-color: #c29294;
+        display: inline-block;
+        color : white;cursor: pointer;
+        &:hover  .end__response{
+            display: block;
+        }
+    }
+    &__response{
+        font-size: 14px;
+        line-height: 18px;
+        position: absolute;
+        z-index: 10;
+        background-color: white;
+        width: 50%;
+        padding: 20px;
+        border-radius: 15px;
+        -webkit-box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.1); 
+        box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.1);
+        
+        @media (min-width: 1000px){
+            width: 20%;
+        }
+    }
+
+    &__croyance{
+        width: 80vw;
+        min-height: 60vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        @media (min-width: 1000px){
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+    }
+
 }
 
 .response{
@@ -76,4 +118,39 @@
     height: 40%;
     justify-content: space-around;
     text-align: center;
+}
+
+.croyance{
+    background-color: white;
+    -webkit-box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.1); 
+    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    padding: 25px;
+    margin: 20px;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+
+    @media (min-width: 1000px){
+        width: 39%;
+    }
+    &__title{
+        font-size: 20px;
+        text-align: center;
+        line-height: 35px;
+    }
+    &__texte{
+        line-height: 24px;
+        font-size: 16px;
+    }
+
+    &__button{
+        @extend .button;
+        background-color: transparent; 
+        font-size: 15px;
+        color: #c29294;
+        margin: auto;
+
+    }
 }

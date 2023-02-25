@@ -12,11 +12,22 @@
   </ng-container>
 
 
-  <div *ngIf="etape === questions.length + 1"  class="end">
-    <p>Voici tes résultats : </p>
-    <ul class="response">
-      <li *ngFor="let response of responses">{{response.type}} : {{response.value}}</li>
+  <div *ngIf="etape === questions.length + 1"  class="end" >
+    <h1 class="first__title">Vos résultats : <span class="end__info" (click)="displayResultQuiz()"> ? </span>
+      <ul class="end__response" *ngIf="displayResult">
+        <li *ngFor="let response of responses">{{response.type}} : {{response.value}}</li>
+      </ul>
+      </h1>
+    <ul class="end__croyance">
+      <li *ngFor="let croyance of resultatQuizz" class="croyance">
+        <h3 class="croyance__title">"{{croyance.type}}"</h3>
+        <p class="croyance__texte">{{textPrincipal(croyance.type)}}</p>
+        <button class="croyance__button" (click)="displayMore(croyance.type)" *ngIf="!croyance.displayMore">En savoir plus</button>
+        <p *ngIf="croyance.displayMore" class="croyance__texte" [innerHTML]="textSecondaire(croyance.type)" > </p>
+        <button class="croyance__button" (click)="displayMore(croyance.type)" *ngIf="croyance.displayMore">En savoir moins</button>
+      </li>
     </ul>
+
     <button class="button" (click)="reset()">Recommencer</button>
   </div>
 

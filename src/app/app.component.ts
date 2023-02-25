@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { QuestionType } from './emun/question-type';
+import { QuestionType, textePrincipal, texteSecondaire } from './emun/question-type';
 import { Question } from './models/question';
 import { ResponseQuiz } from './models/response-quiz';
+import { Resultat } from './models/resultat';
 
 
 const questions: Question[] = [
@@ -793,20 +794,30 @@ export class AppComponent {
   etape: number = 0;
   questions: Question[] = questions;
   responseQuiz: ResponseQuiz[] = [];
+  displayResult: boolean = false;
+  resultatQuizz: Resultat[] = [];
 
-  get responses(): {type:string, value:number}[] {
-    let re: { type: string; value: number; }[] = [];
+  get responses(): Resultat[] {
+    let re: Resultat[] = [];
 
     (Object.keys(QuestionType) as (keyof typeof QuestionType)[]).forEach(
       (key) => {
         let value = 0;
         this.responseQuiz.filter((question : ResponseQuiz) => question.type == QuestionType[key]).forEach( elem => value = value + elem.value); // A tester !
-        re.push({ type: QuestionType[key], value :value })
+        re.push({ type: QuestionType[key], value :value, displayMore: false })
       },
     );
 
     return re;
   }
+
+
+  calculeResultat() {
+    let responcesSort:Resultat[]  = this.responses.sort((a, b )=> (a.value >= b.value)? -1 : 1 );
+
+    this.resultatQuizz  = this.responses.filter((e)=> e.value >= responcesSort[1].value);
+  }
+
 
   onClick(valueOfResponse: number, idQuestion: number, type:QuestionType): void {
     this.responseQuiz[idQuestion] = {
@@ -818,6 +829,9 @@ export class AppComponent {
 
   nextStep(): void {
     this.etape++;
+    if(this.etape === questions.length + 1){
+      this.calculeResultat();
+    }
   }
 
   reset(): void {
@@ -835,5 +849,27 @@ export class AppComponent {
     return  this.responseQuiz[id]?.value; 
   
   }
+
+  displayResultQuiz(): void {
+    this.displayResult = !this.displayResult;
+  }
+
+
+  textPrincipal(type: QuestionType): string {
+    return textePrincipal(type);
+  }
+
+  textSecondaire(type: QuestionType): string {
+    return texteSecondaire(type);
+  }
+  
+  displayMore( type: QuestionType){
+    this.resultatQuizz.map((e)=> {
+      if(e.type == type){
+        e.displayMore = !e.displayMore;
+      }
+    }); 
+  }
+
 
 }
