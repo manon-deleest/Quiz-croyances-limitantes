@@ -3,17 +3,20 @@
   <img src="/assets/Lotus.png" alt="" class="generale__logo">
   <button (click)="previousStep()"  *ngIf="etape > 0 && etape < questions.length + 1 " class="previus"> < Précédent</button>
 
+  <!-- Page d'accueil  -->
   <div *ngIf="etape === 0" class="first">
     <h1 class="first__title"> Quels sont vos croyances limitantes ? </h1>
     <p class="first__text">Les croyances limitantes sont des convictions qui limitent notre capacité à atteindre nos objectifs et à vivre une vie épanouissante. Il est important de les identifier et de les remettre en question pour les surmonter.</p>
     <button class="button" (click)="nextStep()">Commencer</button>
   </div>
 
+  <!-- Affichage des questions  -->
   <ng-container *ngFor="let question of questions">
     <app-question *ngIf="etape -1 === question.id" [question]="question" [response]="getResponse(question.id)" (onResponse)="onClick($event, question.id, question.type)"></app-question>
   </ng-container>
 
 
+  <!-- Affichage des résultats -->
   <div *ngIf="etape === questions.length + 1"  class="end" >
     <h1 class="first__title">Vos résultats : <span class="end__info" (click)="displayResultQuiz()"> ? </span>
       <ul class="end__response" *ngIf="displayResult">
