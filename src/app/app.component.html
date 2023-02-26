@@ -1,4 +1,6 @@
 <section class="generale">
+  
+  <img src="/assets/Lotus.png" alt="" class="generale__logo">
   <button (click)="previousStep()"  *ngIf="etape > 0 && etape < questions.length + 1 " class="previus"> < Précédent</button>
 
   <div *ngIf="etape === 0" class="first">
@@ -31,5 +33,4 @@
     <button class="button" (click)="reset()">Recommencer</button>
   </div>
 
-  <img>
 </section>
